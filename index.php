@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="wyglad.css">
 </head>
 <body>
-
+<div>
 <form action="index.php" method="post">
     
     <label for="data">Data</label>
@@ -39,5 +39,20 @@ $servername= "root";
 $password="";
 $dbname = "tygodniowy_harmonogram_pracy";
 
+//połączenie
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+//check
+if ($conn->connect_error){
+    die("Connection Failed ". $conn->connect_error);
+}
+
+
+//pobieranie danych
+$date = $_POST['date']
+$godz_wejscia = $_POST['godz_wejscia'];
+$godz_opuszczenia = $_POST['godz_opuszczenia'];
+$id_pracownika = $_POST['id_pracownika'];
+$dzial = $_POST['dzial'];
 ?>
 </html>
