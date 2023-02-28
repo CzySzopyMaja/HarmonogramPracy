@@ -20,3 +20,12 @@ input[type=text], select {
     border-radius: 4px;
     cursor: pointer;
   }
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+  div {
+    border-radius: 5px;
+    background-color: blue;
+    padding: 20px;
+  }
