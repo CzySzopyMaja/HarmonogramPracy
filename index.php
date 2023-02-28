@@ -22,19 +22,22 @@
 
 
     <label for="dzial">Dział</label>
-    <option Value="Sprzedaż">Sprzedaż</option>
-    <option Value="IT">IT</option>
-    <option Value="Produkcja">Produkcja</option>
-    <option Value="Serwis">Serwis</option>
+        <option Value="Sprzedaż">Sprzedaż</option>
+        <option Value="IT">IT</option>
+        <option Value="Produkcja">Produkcja</option>
+        <option Value="Serwis">Serwis</option>
+        <option Value="Obsługa Klienta">Obsługa Klienta</option>
     </select>
 
     <input type="submit" value="Submit" />
+</form>
+</div>
 </body>
 <?php
-
-
-
-
+$username="localhost";
+$servername= "root";
+$password="";
+$dbname = "tygodniowy_harmonogram_pracy";
 
 ?>
 </html>
