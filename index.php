@@ -15,7 +15,7 @@
     <input type="Time" id="godz_wejscia" name="godz_wejscia" />
 
     <label for="godz_opuszczenia">Czas Opuszczenia</label>
-    <input type="Time" id="" name="godz_opuszczenia" />
+    <input type="Time" id="godz_opuszczenia" name="godz_opuszczenia" />
 
     <label for="id_pracownika">ID Pracownika</label>
     <input type="number"id="id_pracownika" name="id_pracownika"/>
