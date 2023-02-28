@@ -54,5 +54,18 @@ $godz_wejscia = $_POST['godz_wejscia'];
 $godz_opuszczenia = $_POST['godz_opuszczenia'];
 $id_pracownika = $_POST['id_pracownika'];
 $dzial = $_POST['dzial'];
+
+
+$sql="INSERT INTO spis (data,godz_wejscia, godz_opuszczenia, id_pracownika, dzial) 
+values ('$date', '$godz_wejscia', '$godz_opuszczenia', $id_pracownika, '$dzial')";
+
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
+
 ?>
 </html>
