@@ -7,26 +7,24 @@
 <body>
 <div>
 <form action="index.php" method="post">
-    
-    <label for="data">Data</label>
-    <input type="date" id="date" name="data" />
+    <label for="date">Data</label>
+    <input type="date" id="date" name="date" />
 
-    <label for="godz_wejscia">Czas Wejścia</label>
-    <input type="Time" id="godz_wejscia" name="godz_wejscia" />
+    <label for="godz_wejscia">Godzina Wejscia</label>
+    <input type="time" id="godz_wejscia" name="godz_wejscia" />
 
-    <label for="godz_opuszczenia">Czas Opuszczenia</label>
-    <input type="Time" id="godz_opuszczenia" name="godz_opuszczenia" />
+    <label for="godz_opuszczenia">Godzina Opuszczenia</label>
+    <input type="time" id="godz_opuszczenia" name="godz_opuszczenia" />
 
     <label for="id_pracownika">ID Pracownika</label>
-    <input type="number"id="id_pracownika" name="id_pracownika"/>
-
+    <input type="number" id="id_prac" name="id_prac" />
 
     <label for="dzial">Dział</label>
-        <option Value="Sprzedaż">Sprzedaż</option>
-        <option Value="IT">IT</option>
-        <option Value="Produkcja">Produkcja</option>
-        <option Value="Serwis">Serwis</option>
-        <option Value="Obsługa Klienta">Obsługa Klienta</option>
+    <select id="dzial" name="dzial">
+      <option value="sprzedaz">Sprzedaż</option>
+      <option value="kontrola_jakosci">Kontrola jakości</option>
+      <option value="magazyn">Magazyn</option>
+      <option value="administracja">Administracja</option>
     </select>
 
     <input type="submit" value="Submit" />
@@ -34,30 +32,29 @@
 </div>
 </body>
 <?php
-$username="localhost";
-$servername= "root";
-$password="";
+$servername = "localhost";
+$username = "root";
+$password = "";
 $dbname = "tygodniowy_harmonogram_pracy";
 
 //połączenie
 $conn = new mysqli($servername, $username, $password, $dbname);
-
 //check
-if ($conn->connect_error){
-    die("Connection Failed ". $conn->connect_error);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
 
 //pobieranie danych
-$date = $_POST['date']
+$date = $_POST['date'];
 $godz_wejscia = $_POST['godz_wejscia'];
 $godz_opuszczenia = $_POST['godz_opuszczenia'];
-$id_pracownika = $_POST['id_pracownika'];
+$id_pracownika = $_POST['id_prac'];
 $dzial = $_POST['dzial'];
 
 
-$sql="INSERT INTO spis (data,godz_wejscia, godz_opuszczenia, id_pracownika, dzial) 
-values ('$date', '$godz_wejscia', '$godz_opuszczenia', $id_pracownika, '$dzial')";
+$sql = "INSERT INTO spis (data, godz_wejscia, godz_opuszczenia, id_prac, dzial)
+VALUES ('$date', '$godz_wejscia', '$godz_opuszczenia', $id_pracownika, '$dzial')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
