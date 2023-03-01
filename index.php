@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="wyglad.css">
 </head>
 <body>
-<div>
+<div class=div>
   <form action="index.php" method="post">
     <label for="date">Data</label>
     <input type="date" id="date" name="date" />
@@ -22,9 +22,10 @@
     <label for="dzial">Dział</label>
     <select id="dzial" name="dzial">
       <option value="sprzedaz">Sprzedaż</option>
-      <option value="kontrola_jakosci">Kontrola jakości</option>
-      <option value="magazyn">Magazyn</option>
-      <option value="administracja">Administracja</option>
+      <option value="produkcja">Produkcja</option>
+      <option value="IT">IT</option>
+      <option value="serwis">Serwis</option>
+      <option value="obsluga_klienta">Obsługa klienta</option>
     </select>
   
     <input type="submit" value="Submit" />
@@ -38,13 +39,13 @@ $username = "root";
 $password = "";
 $dbname = "tygodniowy_harmonogram_pracy";
 
-// Create connection
+// Podłączenie do bazy
 $conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
+// Check
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
+//Pobieranie danych
 $date = $_POST['date'];
 $godz_wejscia = $_POST['godz_wejscia'];
 $godz_opuszczenia = $_POST['godz_opuszczenia'];

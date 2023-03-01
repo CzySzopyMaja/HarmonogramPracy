@@ -24,8 +24,8 @@ input[type=text], select {
     background-color: #45a049;
   }
   
-  div {
+  .div {
     border-radius: 5px;
-    background-color: blue;
+    background-color: rgb(13, 181, 187);
     padding: 20px;
   }
