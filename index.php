@@ -54,13 +54,13 @@ $dzial = $_POST['dzial'];
 
 $sql = "INSERT INTO spis (data, godz_wejscia, godz_opuszczenia, id_pracownika, dzial)
 VALUES ('$date', '$godz_wejscia', '$godz_opuszczenia', $id_pracownika, '$dzial')";
-
+if ($_POST){
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
-
+}
 $conn->close();
 ?> 
 
