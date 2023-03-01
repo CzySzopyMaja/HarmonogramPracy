@@ -6,7 +6,7 @@
 </head>
 <body>
 <div>
-<form action="index.php" method="post">
+  <form action="index.php" method="post">
     <label for="date">Data</label>
     <input type="date" id="date" name="date" />
 
@@ -17,7 +17,7 @@
     <input type="time" id="godz_opuszczenia" name="godz_opuszczenia" />
 
     <label for="id_pracownika">ID Pracownika</label>
-    <input type="number" id="id_prac" name="id_prac" />
+    <input type="number" id="id_pracownika" name="id_pracownika" />
 
     <label for="dzial">Dział</label>
     <select id="dzial" name="dzial">
@@ -26,10 +26,11 @@
       <option value="magazyn">Magazyn</option>
       <option value="administracja">Administracja</option>
     </select>
-
+  
     <input type="submit" value="Submit" />
-</form>
+  </form>
 </div>
+
 </body>
 <?php
 $servername = "localhost";
@@ -37,23 +38,20 @@ $username = "root";
 $password = "";
 $dbname = "tygodniowy_harmonogram_pracy";
 
-//połączenie
+// Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
-//check
+// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-
-//pobieranie danych
 $date = $_POST['date'];
 $godz_wejscia = $_POST['godz_wejscia'];
 $godz_opuszczenia = $_POST['godz_opuszczenia'];
-$id_pracownika = $_POST['id_prac'];
+$id_pracownika = $_POST['id_pracownika'];
 $dzial = $_POST['dzial'];
 
-
-$sql = "INSERT INTO spis (data, godz_wejscia, godz_opuszczenia, id_prac, dzial)
+$sql = "INSERT INTO spis (data, godz_wejscia, godz_opuszczenia, id_pracownika, dzial)
 VALUES ('$date', '$godz_wejscia', '$godz_opuszczenia', $id_pracownika, '$dzial')";
 
 if ($conn->query($sql) === TRUE) {
@@ -63,6 +61,6 @@ if ($conn->query($sql) === TRUE) {
 }
 
 $conn->close();
+?> 
 
-?>
 </html>
