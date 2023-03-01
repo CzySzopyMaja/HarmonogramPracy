@@ -30,14 +30,17 @@
   
     <input type="submit" value="Submit" />
 
-    <form action="index.php" method="GET">
-            <input type="submit" name="wyswietl" value="Wyświetl">
+    <!--<form action="index.php" method="GET">
+            <input type="submit" name="wyswietl" value="Wyświetl ostatnie 7 wpisów">-->
 
+    <a href="index.php?action=show">Wyświetl</a>
   </form>
 </div>
 
 </body>
 <?php
+error_reporting(0);
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -68,8 +71,9 @@ if ($conn->query($sql) === TRUE) {
 $conn->close();
 
 
-if (isset($_GET['action'])) {
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+if ($_GET['action']) {
+    $conn = new mysqli($servername, $username, $password, $dbname);
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
@@ -77,6 +81,7 @@ $sql1 = "SELECT * FROM spis ORDER BY id DESC LIMIT 7";
 $result = $conn->query($sql1);
 if ($result->num_rows > 0) {
     // output data of each row
+    echo "<table><tbody>";
     while($row = $result->fetch_assoc()) {
         echo "<tr>";
         echo "<td>" . $row['id'] . "</td>";
@@ -87,6 +92,7 @@ if ($result->num_rows > 0) {
         echo "<td>" . $row['dzial'] . "</td>";
         echo "</tr>";
     }
+    echo "</tbody></table>";
 } else {
     echo "Brak wyników";
 }
